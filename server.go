@@ -7,19 +7,18 @@ import (
 
 type Response struct {
 	Message		string		`json:"message"`
-	Timestamp	time.Time	`json:"timestamp"`
+	Timestamp	int64		`json:"timestamp"`
 
 }
 
 func main() {
 	app := fiber.New();
 
-	response := Response {
-		Message:	"My name is Ryan Meline",
-		Timestamp:	time.Now(),
-	}
-
-	app.Get("/", func(c fiber.Ctx) error {
+	app.Get("/", func(c fiber.Ctx) error {	
+		response := Response {
+			Message:	"My name is Ryan Meline",
+			Timestamp:	time.Now().Unix(),
+		}
 		return c.JSON(response)
 	})
 
