@@ -7,7 +7,7 @@
 
 Init Go app
 ```
-go mob init github.com/RyanMeline/Liatrio-apprentice-technical-exercise
+go mod init github.com/RyanMeline/Liatrio-apprentice-technical-exercise
 ```
 
 Install Fiber
