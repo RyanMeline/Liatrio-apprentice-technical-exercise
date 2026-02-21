@@ -14,3 +14,11 @@ Install Fiber
 ```
 go get github.com/gofiber/fiber/v3
 ```
+
+Returns JSON object with a string and the current UNIX time
+```
+{
+    "message": "My name is Ryan Meline",
+    "timestamp": 12341234
+}
+```
