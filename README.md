@@ -22,3 +22,15 @@ Returns JSON object with a string and the current UNIX time
     "timestamp": 12341234
 }
 ```
+
+### Dockerfile
+
+Build image
+```
+docker build -t goapp .
+```
+
+Run image
+```
+docker run -p 3000:3000 goapp
+```
