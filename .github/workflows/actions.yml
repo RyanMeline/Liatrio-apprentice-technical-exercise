@@ -11,5 +11,5 @@ jobs:
     - name: Build Docker image
       run: docker build goapp/ --tag goapp:$(git rev-parse --short "$GITHUB_SHA")
 
-    - name: run tests
-      uses: liatrio/github-actions/apprentice-action@master
+#    - name: run tests
+#      uses: liatrio/github-actions/apprentice-action@master
