@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build Docker image
-      run: docker build goapp/ --file Dockerfile --tag goapp:$(git rev-parse --short "$GITHUB_SHA")
+      run: docker build goapp/ --tag goapp:$(git rev-parse --short "$GITHUB_SHA")
