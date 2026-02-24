@@ -12,7 +12,7 @@ jobs:
       run: docker build goapp/ --tag goapp:$(git rev-parse --short "$GITHUB_SHA")
 
     - name: Run Image
-      run: docker run -p 80:80 goapp:$(git rev-parse --short "$GITHUB_SHA")
+      run: docker run -d -p 80:80 goapp:$(git rev-parse --short "$GITHUB_SHA")
 
     - name: Run Tests
       uses: liatrio/github-actions/apprentice-action@master
