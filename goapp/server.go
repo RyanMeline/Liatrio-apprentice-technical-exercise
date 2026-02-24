@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/gofiber/fiber/v3"
 	"time"
-	"net/http"
 )
 
 type Response struct {
@@ -23,5 +22,5 @@ func main() {
 		return c.JSON(response)
 	})
 
-	log.Fatal(http.ListenAndServer(":80",nil))
+	app.Listen("80");
 }
