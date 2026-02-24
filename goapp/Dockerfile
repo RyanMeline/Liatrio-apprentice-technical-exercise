@@ -8,6 +8,8 @@ RUN go mod download
 
 COPY *.go ./
 
+EXPOSE 80
+
 RUN CGO_ENABLED=0 GOOS=linux go build -o /goapp
 
 CMD ["/goapp"]
