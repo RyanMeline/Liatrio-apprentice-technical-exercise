@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v3"
 	"time"
+	"encoding/json"
 )
 
 type Response struct {
@@ -12,7 +13,7 @@ type Response struct {
 }
 
 func main() {
-	app := fiber.New();
+	app := fiber.New(fiber.Config{ JSONEncoder: json.Marshal, });
 
 	app.Get("/", func(c fiber.Ctx) error {	
 		response := Response {
