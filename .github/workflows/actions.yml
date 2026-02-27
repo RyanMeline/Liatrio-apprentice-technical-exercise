@@ -19,8 +19,8 @@ jobs:
 
     - name: Test secrets
       run: |
-        if [ -z "${{ secrets.DOCKERHUB_USERNAME }}"]; then echo "username empty"; fi
-        if [ -z "${{ secrets.DOCKERHUB_TOKEN }}"]; then echo "token empty"; fi
+        if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ]; then echo "username empty"; fi
+        if [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then echo "token empty"; fi
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
