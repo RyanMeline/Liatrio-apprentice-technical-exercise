@@ -1,1 +1,5 @@
 server.exe
+
+# Vim files
+*.swp
+*.*~
