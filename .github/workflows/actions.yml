@@ -15,4 +15,4 @@ jobs:
       run: docker run -d -p 80:80 goapp:$(git rev-parse --short "$GITHUB_SHA")
 
     - name: Run Tests
-      uses: liatrio/github-actions/apprentice-action@master
+      uses: liatrio/github-actions/apprentice-action@0b41561
