@@ -1,14 +1,18 @@
-name: Build Go app Docker Image
+name: Build, Test, and Push image to Docker Hub
 
-on: push
-
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Build Docker image
       run: docker build goapp/ --tag ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:$(git rev-parse --short "$GITHUB_SHA")
 
