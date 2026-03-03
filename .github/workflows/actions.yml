@@ -52,4 +52,4 @@ jobs:
         credentials_json: ${{ secrets.GOOGLE_SA_KEY }}
 
     - name: Deploy to Cloud Run
-      run: gloud run deploy goapp --image docker.io/${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:$(git rev-parse --short "$GITHUB_SHA") --region us-west1 --allow-unauthenticated --platform managed
+      run: gcloud run deploy goapp --image docker.io/${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:$(git rev-parse --short "$GITHUB_SHA") --region us-west1 --allow-unauthenticated --platform managed
