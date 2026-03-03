@@ -35,7 +35,7 @@ jobs:
       run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:$(git rev-parse --short "$GITHUB_SHA")
 
     - name: Run Container
-      run: docker run -d -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:$(git rev-parse --short "$GITHUB_SHA")
+      run: docker run -d -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:$(git rev-parse --short "$GITHUB_SHA")
 
     - name: Run Tests
       uses: liatrio/github-actions/apprentice-action@0b41561cca6822cc8d880fe0e49e7807a41fdf91
