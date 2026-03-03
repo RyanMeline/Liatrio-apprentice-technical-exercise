@@ -1,5 +1,7 @@
 # Liatrio-apprentice-technical-exercise
 
+## Link: https://goapp-529576149401.us-west1.run.app
+
 ## Workflow
 On push or PR to main
 ### build
@@ -27,7 +29,13 @@ Runs Tests using<br>
 
 ### deploy
 #### Depends on tests
+Authenticates using service agent key stored in secrets<br>
 
+Pushes to Google Cloud Run directly from Docker Hub<br>
+`gcloud run deploy goapp --image docker.io/<Docker Username>/liatrio-apprentice:<shortened commit hash> --region us-west1 --allow-unauthenticated`<br>
+`--image <url>` Allows pushing from Docker Hub to Cloud Run<br>
+`--regioun us-west1` Sets the region to Oregon<br>
+`--allow-unauthenticated` Allows all users to access the site<br>
 
 ## Process
 
