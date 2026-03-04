@@ -9,7 +9,7 @@ import (
 type Response struct {
 	Message		string		`json:"message"`
 	Timestamp	int64		`json:"timestamp"`
-
+	Test 		string		`json:"test"`
 }
 
 func main() {
@@ -19,6 +19,7 @@ func main() {
 		response := Response {
 			Message:	"My name is Ryan Meline",
 			Timestamp:	time.Now().UnixMilli(),
+			Test:		"Test string",
 		}
 		return c.JSON(response)
 	})
