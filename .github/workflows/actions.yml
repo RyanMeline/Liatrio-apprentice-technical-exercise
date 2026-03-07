@@ -1,4 +1,4 @@
-name: Build, Test, and Push image to Docker Hub
+name: Build, Test, and Deploy the Image
 
 on:
   push:
@@ -16,12 +16,14 @@ jobs:
       run: docker build goapp/ --tag ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:${{ github.sha }}
 
     - name: Log in to Docker Hub
+      if: github.event_name == 'push'
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Push to Docker Hub
+      if: github.event_name == 'push'
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:${{ github.sha }}
 
   test:
@@ -31,7 +33,12 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Pull Image
+      if: github.event_name == 'push'
       run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:${{ github.sha }}
+
+    - name: Build Docker image
+      if: github.event_name == 'pull_request'
+      run: docker build goapp/ --tag ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:${{ github.sha }}
 
     - name: Run Container
       run: docker run -d -p 80:8080 ${{ secrets.DOCKERHUB_USERNAME }}/liatrio-apprentice:${{ github.sha }}
@@ -42,6 +49,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
+    if: github.event_name == 'push'
     steps:
     - uses: actions/checkout@v4
 
