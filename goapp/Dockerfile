@@ -8,7 +8,7 @@ RUN go mod download
 
 COPY *.go ./
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /goapp
+RUN go build -o /goapp
 
 EXPOSE 8080
 
