@@ -3,22 +3,10 @@
 ## Link: https://goapp-529576149401.us-west1.run.app
 
 ## Workflow
-On push or PR to main
-### build
-
+### test
+ON PUSH AND PR:<br>
 Builds Docker Image<br>
 `docker build goapp/ --tag <Docker Username>/liatrio-apprentice:<commit hash>`
-
-Logs into Docker Hub using<br>
- `docker/login-action@v3`
-
-Pushes to Docker Hub<br>
-`docker push <Docker Username>/liatrio-apprentice:<commit hash>`
-
-### test
-#### Depends on build
-Pulls from Docker Hub<br>
-`docker pull <Docker Username>/liatrio-apprentice:<commit hash>`
 
 Runs Container<br>
 `docker run -d -p 80:80 <Docker Username>/liatrio-apprentice:<commit hash>`<br>
@@ -27,9 +15,19 @@ Runs Container<br>
 Runs Tests using<br>
 `liatrio/github-actions/apprentice-action@0b41561cca6822cc8d880fe0e49e7807a41fdf91`
 
+ONLY ON PUSH:<br>
+
+Logs into Docker Hub using<br>
+ `docker/login-action@v3`
+
+Pushes to Docker Hub<br>
+`docker push <Docker Username>/liatrio-apprentice:<commit hash>`
+
 ### deploy
 #### Depends on tests
 Authenticates using service agent key stored in secrets<br>
+`google-github-actions/auth@v1`<br>
+`credentials_json: <Authentication Certificate>`<br>
 
 Pushes to Google Cloud Run directly from Docker Hub<br>
 `gcloud run deploy goapp --image docker.io/<Docker Username>/liatrio-apprentice:<commit hash> --region us-west1 --allow-unauthenticated`<br>
