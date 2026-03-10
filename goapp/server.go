@@ -18,7 +18,7 @@ func main() {
 		response := Response {
 			Message:	"My name is Ryan Meline",
 			Timestamp:	time.Now().UnixMilli(),
-			Test:		"Automation!",
+			Test:		"Testing!",
 		}
 		return c.JSON(response)
 	})
